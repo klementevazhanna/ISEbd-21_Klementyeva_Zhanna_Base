@@ -49,6 +49,12 @@
   <ItemGroup>
     <Compile Include="AbstrBoat.cs" />
     <Compile Include="BaseBoat.cs" />
+    <Compile Include="GavanForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GavanForm.designer.cs">
+      <DependentUpon>GavanForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cater.cs" />
     <Compile Include="enum.cs" />
     <Compile Include="FormCar.cs">
@@ -58,6 +64,7 @@
       <DependentUpon>FormCar.cs</DependentUpon>
     </Compile>
     <Compile Include="ITransport.cs" />
+    <Compile Include="Parking.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -71,6 +78,9 @@
       <DependentUpon>RuntimeTextTemplate1.tt</DependentUpon>
     </Compile>
     <Compile Include="SportCar.cs" />
+    <EmbeddedResource Include="GavanForm.resx">
+      <DependentUpon>GavanForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormCar.resx">
       <DependentUpon>FormCar.cs</DependentUpon>
     </EmbeddedResource>
