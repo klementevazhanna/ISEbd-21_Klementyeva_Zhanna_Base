@@ -13,11 +13,13 @@ namespace WindowsFormsCars1
 {
     public partial class FormCar : Form
     {
-        private SportCar car;
+        private ITransport car;
+
         public FormCar()
         {
             InitializeComponent();
         }
+
         private void Draw()
         {
             Bitmap bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
@@ -26,20 +28,12 @@ namespace WindowsFormsCars1
             pictureBox1.Image = bmp;
         }
 
-        private void buttonСreate_Click(object sender, EventArgs e)
+        private void btnСreateBoat_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            car = new SportCar();
-            car.Init(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue,
-           Color.Yellow, true, true); car.SetPosition(rnd.Next(20, 100),
-           rnd.Next(50, 200), pictureBox1.Width, pictureBox1.Height);
-            //pictureBox1.Height
+            car = new BaseBoat(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Black);            
+            car.SetPosition(rnd.Next(20, 100), rnd.Next(50, 200), pictureBox1.Width, pictureBox1.Height);
             Draw();
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void buttonMove_Click(object sender, EventArgs e)
@@ -60,18 +54,16 @@ namespace WindowsFormsCars1
                 case "buttonRight1":
                    car.MoveTransport(Direction.Right);
                     break;
-                case "pictureBox1_Click":
-                    
-                    break;
-
             }
             Draw();
         }
-   
 
-        private void FormCar_Load(object sender, EventArgs e)
+        private void btnCreateCater_Click(object sender, EventArgs e)
         {
-
+            Random rnd = new Random();
+            car = new Cater(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Black, Color.Red, true, true);
+            car.SetPosition(rnd.Next(20, 100), rnd.Next(50, 200), pictureBox1.Width, pictureBox1.Height);
+            Draw();
         }
     }
 } 

@@ -47,6 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstrBoat.cs" />
+    <Compile Include="BaseBoat.cs" />
+    <Compile Include="Cater.cs" />
     <Compile Include="enum.cs" />
     <Compile Include="FormCar.cs">
       <SubType>Form</SubType>
@@ -54,12 +57,18 @@
     <Compile Include="FormCar.Designer.cs">
       <DependentUpon>FormCar.cs</DependentUpon>
     </Compile>
+    <Compile Include="ITransport.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RuntimeTextTemplate1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RuntimeTextTemplate1.tt</DependentUpon>
     </Compile>
     <Compile Include="SportCar.cs" />
     <EmbeddedResource Include="FormCar.resx">
@@ -97,6 +106,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\11111.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="RuntimeTextTemplate1.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>RuntimeTextTemplate1.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
