@@ -128,5 +128,27 @@ namespace WindowsFormsCars1
         {
             Draw();
         }
+
+        private void AddCar(AbstrBoat car)
+        {
+            if (car != null && lBParking.SelectedIndex > -1)
+            {
+                if ((parkingColl[lBParking.SelectedItem.ToString()]) + car)
+                {
+                    Draw();
+                }
+                else
+                {
+                    MessageBox.Show("Машину не удалось поставить");
+                }
+            }
+        }
+
+        private void btnChoose_Click(object sender, EventArgs e)
+        {
+            var formCarConfig = new FormCarConfig();
+            formCarConfig.AddEvent(AddCar);
+            formCarConfig.Show();
+        }
     }
 }
