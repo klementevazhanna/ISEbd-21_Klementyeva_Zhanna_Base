@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace WindowsFormsCars1
 {
-    class BaseBoat : AbstrBoat
+    public class BaseBoat : AbstrBoat
     {
         private readonly int carWidth = 150;
         private readonly int carHeight = 50;

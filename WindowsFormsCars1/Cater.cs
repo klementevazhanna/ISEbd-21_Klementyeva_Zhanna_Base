@@ -23,6 +23,11 @@ namespace WindowsFormsCars1
             Square = square;
         }
 
+        public void setDopColor(Color dopColor)
+        {
+            DopColor = dopColor;
+        }
+
         public override void DrawTransport(Graphics g)
         {
             base.DrawTransport(g);
