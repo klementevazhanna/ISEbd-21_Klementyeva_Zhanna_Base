@@ -9,17 +9,19 @@ namespace WindowsFormsCars1
 {
     public class Parking<T> where T : class, ITransport
     {
-        private readonly T[] _places;
+        private readonly List<T> _places;
         private readonly int pictureWidth;
         private readonly int pictureHeight;
-        private const int _placeSizeWidth = 180;
+        private readonly int _maxCount;
+        private const int _placeSizeWidth = 200;
         private const int _placeSizeHeight = 70;
 
         public Parking(int picWidth, int picHeight)
         {
             int width = picWidth / _placeSizeWidth;
             int height = picHeight / _placeSizeHeight;
-            _places = new T[width * height];
+            _maxCount = width * height;
+            _places = new List<T>();
             pictureWidth = picWidth;
             pictureHeight = picHeight;
         }
@@ -29,40 +31,37 @@ namespace WindowsFormsCars1
             return _places[index] == null;
         }
 
-        public static int operator +(Parking<T> p, T car) // сложение 
+        public static bool operator +(Parking<T> p, T car)
         {
-            for (int i = 0; i < p._places.Length; i++)
+            if (p._places.Count < p._maxCount)
             {
-                if (p.CheckFreePlace(i))
-                {
-                    p._places[i] = car;
-                    p._places[i].SetPosition(i % 5 * _placeSizeWidth, i / 5 * _placeSizeHeight + 15, p.pictureWidth, p.pictureHeight);
-                    return i;
-                }
+                p._places.Add(car);
+                return true;
             }
-            return -1;
+            return false;
         }
 
-        public static T operator -(Parking<T> p, int index) // вычитание 
+        public static T operator -(Parking<T> p, int index)
         {
-            if (index < 0 || index > p._places.Length)
+            if (index < 0 || index > p._places.Count)
             {
                 return null;
             }
             if (!p.CheckFreePlace(index))
             {
                 T car = p._places[index];
-                p._places[index] = null;
+                p._places.RemoveAt(index);
                 return car;
             }
             return null;
         }
-        
+
         public void Draw(Graphics g)
         {
             DrawMarking(g);
-            for (int i = 0; i < _places.Length; i++)
+            for (int i = 0; i < _places.Count; i++)
             {
+                _places[i].SetPosition(20 + i % 4 * _placeSizeWidth, i / 4 * _placeSizeHeight + 15, pictureWidth, pictureHeight);
                 _places[i]?.DrawTransport(g);
             }
         }
