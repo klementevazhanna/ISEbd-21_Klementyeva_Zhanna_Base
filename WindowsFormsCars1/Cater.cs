@@ -23,6 +23,20 @@ namespace WindowsFormsCars1
             Square = square;
         }
 
+        public Cater(string info) : base(info)
+        {
+            string[] strs = info.Split(separator);
+            if (strs.Length == 6)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+                DopColor = Color.FromName(strs[3]);
+                Motor = Convert.ToBoolean(strs[4]);
+                Square = Convert.ToBoolean(strs[5]);
+            }
+        }
+
         public void setDopColor(Color dopColor)
         {
             DopColor = dopColor;
@@ -51,6 +65,9 @@ namespace WindowsFormsCars1
             }
         }
 
-
+        public override string ToString()
+        {
+            return $"{base.ToString()}{separator}{DopColor.Name}{separator}{Motor}{separator}{Square}";
+        }
     }
 }
