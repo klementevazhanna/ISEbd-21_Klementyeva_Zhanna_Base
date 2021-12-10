@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
 
 namespace WindowsFormsCars1
 {
-    public class BaseBoat : AbstrBoat
+    public class BaseBoat : AbstrBoat, IEquatable<BaseBoat>
     {
         private readonly int carWidth = 150;
         private readonly int carHeight = 50;
@@ -84,6 +80,47 @@ namespace WindowsFormsCars1
         public override string ToString()
         {
             return $"{MaxSpeed}{separator}{Weight}{separator}{MainColor.Name}";
+        }
+
+        public bool Equals(BaseBoat other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return false;
+            }
+            if (Weight != other.Weight)
+            {
+                return false;
+            }
+            if (MainColor != other.MainColor)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if(!(obj is BaseBoat))
+            {
+                return false;
+            }
+            else 
+            {
+                return Equals(obj as BaseBoat);
+            }
         }
     }
 }

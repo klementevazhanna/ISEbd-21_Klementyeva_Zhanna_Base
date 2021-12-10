@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
 
 namespace WindowsFormsCars1
 {
-    class Cater : BaseBoat
+    public class Cater : BaseBoat, IEquatable<Cater>
     {
         public Color DopColor { private set; get; }
 
@@ -68,6 +64,34 @@ namespace WindowsFormsCars1
         public override string ToString()
         {
             return $"{base.ToString()}{separator}{DopColor.Name}{separator}{Motor}{separator}{Square}";
+        }
+
+        public bool Equals(Cater other)
+        {
+            if (DopColor == other.DopColor && Motor == other.Motor && Square == other.Square)
+            {
+                return base.Equals(other);
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (!(obj is Cater))
+            {
+                return false;
+            }
+            else 
+            {
+                return Equals(obj as Cater);
+            }
         }
     }
 }

@@ -116,7 +116,8 @@ namespace WindowsFormsCars1
         {
             if (car != null && lBParking.SelectedIndex > -1)
             {
-                try {
+                try
+                {
                     if ((parkingColl[lBParking.SelectedItem.ToString()]) + car)
                     {
                         Draw();
@@ -130,6 +131,11 @@ namespace WindowsFormsCars1
                 catch (ParkingOverflowException ex)
                 {
                     MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Warn(ex.Message);
+                }
+                catch (ParkingAlreadyHaveException ex)
+                {
+                    MessageBox.Show(ex.Message, "Дублирование", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     logger.Warn(ex.Message);
                 }
                 catch (Exception ex)
@@ -188,6 +194,17 @@ namespace WindowsFormsCars1
                     logger.Warn(ex.Message);
                 }
             }
+        }
+
+        private void btnSort_Click(object sender, EventArgs e)
+        {
+            if (lBParking.SelectedIndex > -1)
+            {
+                parkingColl[lBParking.SelectedItem.ToString()].Sort();
+                Draw();
+                logger.Info("Сортировка уровней");
+            }
+
         }
     }
 }
