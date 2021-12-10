@@ -43,7 +43,7 @@ namespace WindowsFormsCars1
             }
         }
 
-        public bool SaveData(string filename)
+        public void SaveData(string filename)
         {
             if (File.Exists(filename))
             {
@@ -77,14 +77,13 @@ namespace WindowsFormsCars1
                     }
                 }
             }
-            return true;
         }
 
-        public bool LoadData(string filename)
+        public void LoadData(string filename)
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException();
             }
             using (StreamReader sr = new StreamReader(filename))
             {
@@ -97,7 +96,7 @@ namespace WindowsFormsCars1
                 else
                 {
                     //если нет такой записи, то это не те данные 
-                    return false;
+                    throw new ArgumentOutOfRangeException();
                 }
                 AbstrBoat car = null;
                 string key = string.Empty;
@@ -121,12 +120,11 @@ namespace WindowsFormsCars1
                         }
                         if (!(parkingStages[key] + car))
                         {
-                            return false;
+                            throw new ParkingOverflowException();
                         }
                     }
                 }
             }
-            return true;
         }
     }
 }
