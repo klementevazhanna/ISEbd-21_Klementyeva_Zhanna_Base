@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="AbstrBoat.cs" />
     <Compile Include="BaseBoat.cs" />
+    <Compile Include="BoatComparer.cs" />
     <Compile Include="FormCarConfig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +81,7 @@
     </Compile>
     <Compile Include="ITransport.cs" />
     <Compile Include="Parking.cs" />
+    <Compile Include="ParkingAlreadyHaveException.cs" />
     <Compile Include="ParkingCollection.cs" />
     <Compile Include="ParkingNotFoundException.cs" />
     <Compile Include="ParkingOccupiedPlaceException.cs" />
@@ -96,7 +98,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RuntimeTextTemplate1.tt</DependentUpon>
     </Compile>
-    <Compile Include="SportCar.cs" />
     <EmbeddedResource Include="FormCarConfig.resx">
       <DependentUpon>FormCarConfig.cs</DependentUpon>
     </EmbeddedResource>
